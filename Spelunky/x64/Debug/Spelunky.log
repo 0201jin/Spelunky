@@ -1,0 +1,4 @@
+﻿  Spelunky.cpp
+C:\Users\0201j\Desktop\공부\Spelunky\Spelunky\Spelunky.cpp(77,21): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\0201j\Desktop\공부\Spelunky\Spelunky\Spelunky.cpp(78,21): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Spelunky.vcxproj -> C:\Users\0201j\Desktop\공부\Spelunky\x64\Debug\Spelunky.exe
