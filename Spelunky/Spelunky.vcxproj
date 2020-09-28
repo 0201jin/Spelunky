@@ -144,18 +144,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="InputSystem.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Spelunky.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageMgr.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Spelunky.cpp" />
+    <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageMgr.cpp" />
   </ItemGroup>

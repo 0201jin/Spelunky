@@ -6,6 +6,7 @@
 #include "Main.h"
 #include <iostream>
 #include <chrono>
+#include "InputSystem.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 Main* MainClass;
+InputSystem* InputSys;
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
@@ -59,23 +61,24 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_SPELUNKY));
 
 	MSG msg;
+	msg.message = WM_NULL;
 
 	// 기본 메시지 루프입니다:
 
 	auto time = chrono::system_clock::now();
 
-	while (GetMessage(&msg, nullptr, 0, 0))
+	while (msg.message != WM_QUIT)
 	{
 		auto deltaTime = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now() - time).count() * 0.001;
 
-		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-		{
-			TranslateMessage(&msg);
+		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 			DispatchMessage(&msg);
+		else
+		{
+			MainClass->Render(deltaTime + 0.001);
+			MainClass->Update(deltaTime + 0.001);
+			InputSys->Frame();
 		}
-
-		MainClass->Render(deltaTime);
-		MainClass->Update(deltaTime);
 
 		time = chrono::system_clock::now();
 	}
@@ -123,7 +126,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
 	hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-	HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_SYSMENU, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+	HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_SYSMENU, CW_USEDEFAULT, CW_USEDEFAULT, 1280, 760, nullptr, nullptr, hInstance, nullptr);
 
 	if (!hWnd)
 	{
@@ -135,6 +138,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 	MainClass = new Main();
 	MainClass->Initialize(hWnd);
+
+	InputSys = new InputSystem();
+	InputSys->Init(hInst, hWnd, 1280, 720);
 
 	return TRUE;
 }
@@ -153,14 +159,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message)
 	{
-	case WM_PAINT:
-	{
-		PAINTSTRUCT ps;
-		HDC hdc = BeginPaint(hWnd, &ps);
-		// TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
-		EndPaint(hWnd, &ps);
-	}
-	break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
@@ -168,24 +166,4 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
 	return 0;
-}
-
-// 정보 대화 상자의 메시지 처리기입니다.
-INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
-{
-	UNREFERENCED_PARAMETER(lParam);
-	switch (message)
-	{
-	case WM_INITDIALOG:
-		return (INT_PTR)TRUE;
-
-	case WM_COMMAND:
-		if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
-		{
-			EndDialog(hDlg, LOWORD(wParam));
-			return (INT_PTR)TRUE;
-		}
-		break;
-	}
-	return (INT_PTR)FALSE;
 }

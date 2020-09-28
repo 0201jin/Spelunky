@@ -17,11 +17,14 @@
     <Filter Include="Scr\State">
       <UniqueIdentifier>{bbf55476-938e-4fde-9711-4a1e146c3f69}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scr\State\MainMenu">
+      <UniqueIdentifier>{e4b1c733-da46-42f1-97bc-3cd7498e7eed}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Scr\State\Mgr">
       <UniqueIdentifier>{8ba64519-feae-469f-a7d9-5869ac59b759}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scr\State\MainMenu">
-      <UniqueIdentifier>{e4b1c733-da46-42f1-97bc-3cd7498e7eed}</UniqueIdentifier>
+    <Filter Include="Scr\System">
+      <UniqueIdentifier>{564882ad-3974-4580-9b22-59b6c5f36d63}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +51,12 @@
     </ClInclude>
     <ClInclude Include="Spelunky.h">
       <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSheet.h">
+      <Filter>Scr\System</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSystem.h">
+      <Filter>Scr\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +99,12 @@
     </ClCompile>
     <ClCompile Include="Spelunky.cpp">
       <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteSheet.cpp">
+      <Filter>Scr\System</Filter>
+    </ClCompile>
+    <ClCompile Include="InputSystem.cpp">
+      <Filter>Scr\System</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

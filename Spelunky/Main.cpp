@@ -34,7 +34,7 @@ void Main::Render(float _deltaTime)
 	D2DRenderTarget->BeginDraw();
 	D2DRenderTarget->Clear();
 
-
+	mStageMgr->GetInst()->Render(_deltaTime);
 
 	D2DRenderTarget->EndDraw();
 }
@@ -50,6 +50,8 @@ HRESULT Main::CreateDevice()
 		D2D1_SIZE_U size = D2D1::SizeU(rc.right - rc.left, rc.bottom - rc.top);
 
 		hr = D2DFactory->CreateHwndRenderTarget(D2D1::RenderTargetProperties(), D2D1::HwndRenderTargetProperties(hWnd, size), &D2DRenderTarget);
+
+		mStageMgr->GetInst()->SetRenderTarget(D2DRenderTarget);
 	}
 
 	return hr;
