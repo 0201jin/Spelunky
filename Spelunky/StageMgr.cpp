@@ -1,6 +1,7 @@
 #include "StageMgr.h"
 
 #include "MainMenu.h"
+#include "CharacterSelect.h"
 
 StageMgr* StageMgr::Inst = nullptr;
 
@@ -15,6 +16,13 @@ StageMgr::~StageMgr()
 
 void StageMgr::SetState(int _id)
 {
+	switch (_id)
+	{
+	case 1:
+		mStage = new CharacterSelect();
+		mStage->Init(D2DRenderTarget);
+		break;
+	}
 }
 
 void StageMgr::SetRenderTarget(ID2D1HwndRenderTarget* _D2DRenderTarget)

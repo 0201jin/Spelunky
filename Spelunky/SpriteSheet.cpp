@@ -53,6 +53,4 @@ void SpriteSheet::Draw(float _deltaTime)
 		D2D1::RectF(0.0f, 0.0f, bmp->GetSize().width, bmp->GetSize().height));
 
 	fTime += _deltaTime;
-
-	std::cout << fOpacity << std::endl;
 }

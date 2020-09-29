@@ -10,10 +10,22 @@ public:
 	InputSystem();
 	~InputSystem();
 
+	static InputSystem* GetInst()
+	{
+		if (Inst == nullptr)
+		{
+			Inst = new InputSystem;
+		}
+
+		return Inst;
+	}
+
 	bool Init(HINSTANCE _hInst, HWND _hWnd, int _width, int _height);
 	bool Frame();
 
 	void GetMouseLocation(int& _X, int& _y);
+	bool GetKeyInput(BYTE key);
+	bool GetInputAnyKey();
 
 private:
 	bool ReadKeyboard();
@@ -25,12 +37,14 @@ private:
 	IDirectInputDevice8* keyBoard = nullptr;
 	IDirectInputDevice8* mouse = nullptr;
 
-	unsigned char keyBoardState[256] = { 0, };
+	BYTE keyBoardState[256] = { 0, };
 	DIMOUSESTATE mouseState;
 
 	int screenWidth = 0;
 	int screenHeight = 0;
 	float mouseX = 0;
 	float mouseY = 0;
+
+	static InputSystem* Inst;
 };
 

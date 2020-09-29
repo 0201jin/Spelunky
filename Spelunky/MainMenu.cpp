@@ -1,5 +1,7 @@
 #include "MainMenu.h"
 #include <iostream>
+#include "InputSystem.h"
+#include "StageMgr.h"
 
 void MainMenu::Init(ID2D1HwndRenderTarget* _D2DRenderTarget)
 {
@@ -11,6 +13,8 @@ void MainMenu::Init(ID2D1HwndRenderTarget* _D2DRenderTarget)
 
 void MainMenu::Update(float _deltaTime)
 {
+	if (InputSystem::GetInst()->GetInputAnyKey())
+		StageMgr::GetInst()->SetState(1);
 }
 
 void MainMenu::Render(float _deltaTime)

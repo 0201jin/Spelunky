@@ -1,5 +1,7 @@
 #include "InputSystem.h"
 
+InputSystem* InputSystem::Inst = nullptr;
+
 InputSystem::InputSystem()
 {
 }
@@ -28,6 +30,8 @@ bool InputSystem::Init(HINSTANCE _hInst, HWND _hWnd, int _width, int _height)
 
 bool InputSystem::Frame()
 {
+	ReadMouse();
+
 	ProcessInput();
 
 	return true;
@@ -39,9 +43,38 @@ void InputSystem::GetMouseLocation(int& _X, int& _Y)
 	_Y = mouseY;
 }
 
+bool InputSystem::GetKeyInput(BYTE key)
+{
+	ReadKeyboard();
+
+	return keyBoardState[key] & 0x80 ? true : false;
+}
+
+bool InputSystem::GetInputAnyKey()
+{
+	ReadKeyboard();
+
+	for (int i = 0; i < 256; i++)
+		if (keyBoardState[i] & 0x80)
+			return true;
+
+	return false;
+}
+
 bool InputSystem::ReadKeyboard()
 {
-	keyBoard->GetDeviceState(sizeof(keyBoardState), (LPVOID)&keyBoardState);
+	ZeroMemory(keyBoardState, sizeof(keyBoardState));
+
+	HRESULT m_hr = keyBoard->GetDeviceState(sizeof(keyBoardState), keyBoardState);
+
+	if (FAILED(m_hr))
+	{
+		m_hr = keyBoard->Acquire();
+		while (m_hr == DIERR_INPUTLOST)
+			keyBoard->Acquire();
+
+		return false;
+	}
 
 	return true;
 }

@@ -77,6 +77,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		{
 			MainClass->Render(deltaTime + 0.001);
 			MainClass->Update(deltaTime + 0.001);
+
 			InputSys->Frame();
 		}
 
@@ -139,7 +140,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 	MainClass = new Main();
 	MainClass->Initialize(hWnd);
 
-	InputSys = new InputSystem();
+	InputSys = InputSystem::GetInst();
 	InputSys->Init(hInst, hWnd, 1280, 720);
 
 	return TRUE;
