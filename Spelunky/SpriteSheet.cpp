@@ -1,6 +1,6 @@
 #include "SpriteSheet.h"
 
-SpriteSheet::SpriteSheet(const wchar_t* _fileName, ID2D1HwndRenderTarget* _renderTarget, D2D_VECTOR_2F _Size, D2D_VECTOR_2F _Location)
+SpriteSheet::SpriteSheet(const wchar_t* _fileName, ID2D1HwndRenderTarget* _renderTarget, D2D_VECTOR_2F _Size, D2D_VECTOR_2F _Location, D2D_VECTOR_2F _ImageSize, D2D_VECTOR_2F _ImageLocation)
 {
 	D2DRenderTarget = _renderTarget;
 
@@ -30,6 +30,19 @@ SpriteSheet::SpriteSheet(const wchar_t* _fileName, ID2D1HwndRenderTarget* _rende
 
 	Size = _Size;
 	Location = _Location;
+
+	if (_ImageSize.x == -1)
+		fImageWidth = bmp->GetSize().width;
+	else
+		fImageWidth = _ImageSize.x;
+
+	if (_ImageSize.y == -1)
+		fImageHeight = bmp->GetSize().height;
+	else
+		fImageHeight = _ImageSize.y;
+
+	fImageX = _ImageLocation.x;
+	fImageY = _ImageLocation.y;
 }
 
 SpriteSheet::~SpriteSheet()
@@ -41,7 +54,7 @@ void SpriteSheet::Draw() //UI와 같은 스프라이트가 아닌 이미지를 드로우
 {
 	D2DRenderTarget->DrawBitmap(bmp, D2D1::RectF(Location.x, Location.y, Location.x + Size.x, Location.y + Size.y),
 		fOpacity, D2D1_BITMAP_INTERPOLATION_MODE::D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR,
-		D2D1::RectF(0.0f, 0.0f, bmp->GetSize().width, bmp->GetSize().height));
+		D2D1::RectF(fImageX, fImageY, fImageX + fImageWidth, fImageY + fImageHeight));
 }
 
 void SpriteSheet::Draw(float _deltaTime)
@@ -50,7 +63,7 @@ void SpriteSheet::Draw(float _deltaTime)
 
 	D2DRenderTarget->DrawBitmap(bmp, D2D1::RectF(Location.x, Location.y, Location.x + Size.x, Location.y + Size.y),
 		fOpacity, D2D1_BITMAP_INTERPOLATION_MODE::D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR,
-		D2D1::RectF(0.0f, 0.0f, bmp->GetSize().width, bmp->GetSize().height));
+		D2D1::RectF(fImageX, fImageY, fImageX + fImageWidth, fImageY + fImageHeight));
 
 	fTime += _deltaTime;
 }

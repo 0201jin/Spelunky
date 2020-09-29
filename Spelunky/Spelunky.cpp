@@ -54,7 +54,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	HWND hwnd = GetConsoleWindow(); //콘솔창을 가져옴
 	freopen_s(&fp, "CONIN$", "rb", stdin);
 	freopen_s(&fp, "CONOUT$", "wb", stdout);
-	SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW); //콘솔창을 맨 앞으로 당겨옴
+	//SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW); //콘솔창을 맨 앞으로 당겨옴
 #endif
 	/* 디버깅용 콘솔창 */
 

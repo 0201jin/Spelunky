@@ -1,4 +1,5 @@
 #include "InputSystem.h"
+#include <iostream>
 
 InputSystem* InputSystem::Inst = nullptr;
 
@@ -47,7 +48,23 @@ bool InputSystem::GetKeyInput(BYTE key)
 {
 	ReadKeyboard();
 
-	return keyBoardState[key] & 0x80 ? true : false;
+	return keyBoardState[key] ? true : false;
+}
+
+bool InputSystem::GetKeyPress(BYTE key)
+{
+	ReadKeyboard();
+	
+	if (keyBoardState[key] && !bCheckKeyBoardState[key])
+	{
+		bCheckKeyBoardState[key] = true;
+
+		return true;
+	}
+	else if (bCheckKeyBoardState[key])
+		keyBoard->GetDeviceState(sizeof(bCheckKeyBoardState), bCheckKeyBoardState);
+
+	return false;
 }
 
 bool InputSystem::GetInputAnyKey()
@@ -55,7 +72,7 @@ bool InputSystem::GetInputAnyKey()
 	ReadKeyboard();
 
 	for (int i = 0; i < 256; i++)
-		if (keyBoardState[i] & 0x80)
+		if (keyBoardState[i])
 			return true;
 
 	return false;

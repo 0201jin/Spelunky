@@ -25,6 +25,7 @@ public:
 
 	void GetMouseLocation(int& _X, int& _y);
 	bool GetKeyInput(BYTE key);
+	bool GetKeyPress(BYTE key);
 	bool GetInputAnyKey();
 
 private:
@@ -38,7 +39,9 @@ private:
 	IDirectInputDevice8* mouse = nullptr;
 
 	BYTE keyBoardState[256] = { 0, };
+	bool bCheckKeyBoardState[256] = { false, };
 	DIMOUSESTATE mouseState;
+	BYTE PrevKey;
 
 	int screenWidth = 0;
 	int screenHeight = 0;
