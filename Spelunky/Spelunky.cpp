@@ -66,11 +66,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	// 기본 메시지 루프입니다:
 
 	auto time = chrono::system_clock::now();
+	auto deltaTime = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now() - time).count() * 0.001;
 
 	while (msg.message != WM_QUIT)
 	{
-		auto deltaTime = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now() - time).count() * 0.001;
-
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 			DispatchMessage(&msg);
 		else
@@ -81,6 +80,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			InputSys->Frame();
 		}
 
+		deltaTime = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now() - time).count() * 0.001;
 		time = chrono::system_clock::now();
 	}
 

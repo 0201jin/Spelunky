@@ -1,5 +1,10 @@
-﻿  Spelunky.cpp
+﻿  CharacterSelect.cpp
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-C:\Users\0201j\Desktop\공부\Spelunky\Spelunky\Spelunky.cpp(78,32): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\0201j\Desktop\공부\Spelunky\Spelunky\Spelunky.cpp(79,32): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\0201j\Desktop\공부\Spelunky\Spelunky\CharacterSelect.cpp(23,41): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\0201j\Desktop\공부\Spelunky\Spelunky\CharacterSelect.cpp(57,28): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\0201j\Desktop\공부\Spelunky\Spelunky\CharacterSelect.cpp(65,36): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\0201j\Desktop\공부\Spelunky\Spelunky\CharacterSelect.cpp(69,12): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\0201j\Desktop\공부\Spelunky\Spelunky\CharacterSelect.cpp(71,17): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  StageMgr.cpp
+  코드를 생성하고 있습니다...
   Spelunky.vcxproj -> C:\Users\0201j\Desktop\공부\Spelunky\x64\Debug\Spelunky.exe

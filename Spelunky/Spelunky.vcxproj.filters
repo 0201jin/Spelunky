@@ -29,6 +29,15 @@
     <Filter Include="Scr\State\CharacterSelect">
       <UniqueIdentifier>{7a1a47dc-955b-4c42-abd0-012e16c75435}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scr\Player">
+      <UniqueIdentifier>{09c7b75e-6cac-411d-aa63-6838c50ff5ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scr\Player\Guy">
+      <UniqueIdentifier>{4536a04e-1ae7-43f2-9c5b-1e9394abd248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scr\Player\PlumpMan">
+      <UniqueIdentifier>{d75dcdcf-5078-46ff-9780-70e7dfd1a077}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h">
@@ -63,6 +72,15 @@
     </ClInclude>
     <ClInclude Include="CharacterSelect.h">
       <Filter>Scr\State\CharacterSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerClass.h">
+      <Filter>Scr\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="GuyClass.h">
+      <Filter>Scr\Player\Guy</Filter>
+    </ClInclude>
+    <ClInclude Include="PlumpManClass.h">
+      <Filter>Scr\Player\PlumpMan</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +132,15 @@
     </ClCompile>
     <ClCompile Include="CharacterSelect.cpp">
       <Filter>Scr\State\CharacterSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerClass.cpp">
+      <Filter>Scr\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="GuyClass.cpp">
+      <Filter>Scr\Player\Guy</Filter>
+    </ClCompile>
+    <ClCompile Include="PlumpManClass.cpp">
+      <Filter>Scr\Player\PlumpMan</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

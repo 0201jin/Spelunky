@@ -1,5 +1,6 @@
 #pragma once
 #include "Stage.h"
+#include "PlayerClass.h"
 
 class CharacterSelect : public Stage
 {
@@ -9,7 +10,12 @@ public:
 	virtual void Render(float _deltaTime);
 
 private:
-	vector<SpriteSheet*> spriteSheet;
+	SpriteSheet* BGspriteSheet;
+	vector<PlayerClass*> vPlayers;
+	PlayerClass* Player = nullptr;
+
+	bool bCharacterSelect = false;
+	float fPlayTime = 0;
 
 	int CharacterNumber = 0;
 };

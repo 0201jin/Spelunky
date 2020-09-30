@@ -1,36 +1,76 @@
 #include "CharacterSelect.h"
 #include "InputSystem.h"
 
+#include "GuyClass.h"
+#include "PlumpManClass.h"
+
 void CharacterSelect::Init(ID2D1HwndRenderTarget* _D2DRenderTarget)
 {
 	D2DRenderTarget = _D2DRenderTarget;
 
-	spriteSheet.push_back(new SpriteSheet(L"resource/C1.png", D2DRenderTarget, { 80, 80 }, { 270, 270 }, { 80, 80 }, { 00, 0 }));
-	spriteSheet.push_back(new SpriteSheet(L"resource/C2.png", D2DRenderTarget, { 80, 80 }, { 270, 270 }, { 80, 80 }, { 00, 0 }));
+	vPlayers.push_back(new GuyClass());
+	vPlayers.push_back(new PlumpManClass());
 
-	spriteSheet.push_back(new SpriteSheet(L"resource/Character_Select_BG.png", D2DRenderTarget, { 1280, 720 }, { 0, 0 }));
+	BGspriteSheet = new SpriteSheet(L"resource/Character_Select_BG.png", { 1280, 720 }, { 0, 0 });
 }
 
 void CharacterSelect::Update(float _deltaTime)
 {
-	if (InputSystem::GetInst()->GetKeyPress(DIK_A))
+	if (InputSystem::GetInst()->GetKeyPress(DIK_LEFTARROW) && !bCharacterSelect)
 	{
 		CharacterNumber--;
 		if (CharacterNumber < 0)
-			CharacterNumber = spriteSheet.size() - 2;
+			CharacterNumber = vPlayers.size() - 1;
 	}
 
-	else if (InputSystem::GetInst()->GetKeyPress(DIK_D))
+	else if (InputSystem::GetInst()->GetKeyPress(DIK_RIGHTARROW) && !bCharacterSelect)
 	{
 		CharacterNumber++;
-		if (CharacterNumber >= spriteSheet.size() - 1)
+		if (CharacterNumber >= vPlayers.size())
 			CharacterNumber = 0;
 	}
+
+	else if (InputSystem::GetInst()->GetKeyPress(DIK_Z))
+	{
+		//캐릭터 선택
+		bCharacterSelect = true;
+		Player = vPlayers[CharacterNumber];
+	}
+
+	if (Player != nullptr)
+		Player->Update(_deltaTime);
 }
 
 void CharacterSelect::Render(float _deltaTime)
 {
-	spriteSheet[CharacterNumber]->Draw();
+	if (Player == nullptr)
+		vPlayers[CharacterNumber]->Render(_deltaTime);
 
-	spriteSheet[spriteSheet.size() - 1]->Draw();
+	BGspriteSheet->Draw();
+
+	if (Player != nullptr)
+	{
+		fPlayTime += _deltaTime;
+
+		if (fPlayTime <= 0.5)
+		{
+			Player->MoveF(fPlayTime / 0.1);
+
+			if(fPlayTime > 0.5)
+				Player->ResetAction();
+		}
+		else if (fPlayTime <= 0.8)
+		{
+			Player->SetVelocity({4, 0});
+			Player->MoveR((fPlayTime - 0.5) / 0.1);
+		}
+		else if (fPlayTime <= 2.5)
+		{
+			float A = (fPlayTime - 0.8) / 0.1;
+			Player->SetVelocity({ 4, (A * A - 5 * A)});
+			Player->Jump(A);
+		}
+
+		Player->Render(_deltaTime);
+	}
 }

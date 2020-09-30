@@ -7,8 +7,9 @@ void MainMenu::Init(ID2D1HwndRenderTarget* _D2DRenderTarget)
 {
 	D2DRenderTarget = _D2DRenderTarget;
 
-	spriteSheet.push_back(new SpriteSheet(L"resource/Thumbnail.jpg", D2DRenderTarget, { 1280, 720 }, { 0, 0 }));
-	spriteSheet.push_back(new SpriteSheet(L"resource/PressAnyKey.png", D2DRenderTarget, { 640, 128 }, { 320, 580 }));
+	new SpriteSheet(D2DRenderTarget);
+	spriteSheet.push_back(new SpriteSheet(L"resource/Thumbnail.jpg", { 1280, 720 }, { 0, 0 }));
+	spriteSheet.push_back(new SpriteSheet(L"resource/PressAnyKey.png", { 640, 128 }, { 320, 580 }));
 }
 
 void MainMenu::Update(float _deltaTime)
