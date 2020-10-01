@@ -38,6 +38,18 @@
     <Filter Include="Scr\Player\PlumpMan">
       <UniqueIdentifier>{d75dcdcf-5078-46ff-9780-70e7dfd1a077}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scr\System\InputSystem">
+      <UniqueIdentifier>{6a6114ba-e517-4e77-b2a0-f171ddd59d26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scr\System\SpriteSheet">
+      <UniqueIdentifier>{ed6a14b6-20c4-4c2a-a198-8d93bd2d6570}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scr\State\InGame">
+      <UniqueIdentifier>{65198b05-bce5-4d1f-aa91-17d3559278f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scr\System\MapGenerator">
+      <UniqueIdentifier>{ae829ff2-6f52-4d96-9c32-dc3d4e0f3dcc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h">
@@ -64,12 +76,6 @@
     <ClInclude Include="Spelunky.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteSheet.h">
-      <Filter>Scr\System</Filter>
-    </ClInclude>
-    <ClInclude Include="InputSystem.h">
-      <Filter>Scr\System</Filter>
-    </ClInclude>
     <ClInclude Include="CharacterSelect.h">
       <Filter>Scr\State\CharacterSelect</Filter>
     </ClInclude>
@@ -81,6 +87,18 @@
     </ClInclude>
     <ClInclude Include="PlumpManClass.h">
       <Filter>Scr\Player\PlumpMan</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSystem.h">
+      <Filter>Scr\System\InputSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSheet.h">
+      <Filter>Scr\System\SpriteSheet</Filter>
+    </ClInclude>
+    <ClInclude Include="InGame.h">
+      <Filter>Scr\State\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="MapGenerator.h">
+      <Filter>Scr\System\MapGenerator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -124,12 +142,6 @@
     <ClCompile Include="Spelunky.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteSheet.cpp">
-      <Filter>Scr\System</Filter>
-    </ClCompile>
-    <ClCompile Include="InputSystem.cpp">
-      <Filter>Scr\System</Filter>
-    </ClCompile>
     <ClCompile Include="CharacterSelect.cpp">
       <Filter>Scr\State\CharacterSelect</Filter>
     </ClCompile>
@@ -141,6 +153,18 @@
     </ClCompile>
     <ClCompile Include="PlumpManClass.cpp">
       <Filter>Scr\Player\PlumpMan</Filter>
+    </ClCompile>
+    <ClCompile Include="InputSystem.cpp">
+      <Filter>Scr\System\InputSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteSheet.cpp">
+      <Filter>Scr\System\SpriteSheet</Filter>
+    </ClCompile>
+    <ClCompile Include="InGame.cpp">
+      <Filter>Scr\State\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="MapGenerator.cpp">
+      <Filter>Scr\System\MapGenerator</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

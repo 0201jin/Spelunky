@@ -2,6 +2,7 @@
 
 #include "MainMenu.h"
 #include "CharacterSelect.h"
+#include "InGame.h"
 
 StageMgr* StageMgr::Inst = nullptr;
 
@@ -20,6 +21,11 @@ void StageMgr::SetState(int _id)
 	{
 	case 1:
 		mStage = new CharacterSelect();
+		mStage->Init(D2DRenderTarget);
+		break;
+
+	case 2:
+		mStage = new InGame();
 		mStage->Init(D2DRenderTarget);
 		break;
 	}

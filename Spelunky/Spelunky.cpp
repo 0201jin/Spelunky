@@ -5,7 +5,7 @@
 #include "Spelunky.h"
 #include "Main.h"
 #include <iostream>
-#include <chrono>
+#include <time.h>
 #include "InputSystem.h"
 
 using namespace std;
@@ -65,23 +65,27 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	// 기본 메시지 루프입니다:
 
-	auto time = chrono::system_clock::now();
-	auto deltaTime = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now() - time).count() * 0.001;
+	float time = clock();
+	float deltaTime = 0.01f;
 
 	while (msg.message != WM_QUIT)
 	{
+		time = clock();
+
+		if (deltaTime == 0)
+			deltaTime = 0.01f;
+
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 			DispatchMessage(&msg);
 		else
 		{
-			MainClass->Render(deltaTime + 0.001);
-			MainClass->Update(deltaTime + 0.001);
+			MainClass->Render(deltaTime);
+			MainClass->Update(deltaTime);
 
 			InputSys->Frame();
 		}
 
-		deltaTime = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now() - time).count() * 0.001;
-		time = chrono::system_clock::now();
+		deltaTime = (clock() - time) * 0.001;
 	}
 
 	return (int)msg.wParam;

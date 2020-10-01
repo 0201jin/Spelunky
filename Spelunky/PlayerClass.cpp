@@ -2,9 +2,9 @@
 
 void PlayerClass::Update(float _deltaTime)
 {
-	Location.x += Velocity.x * (_deltaTime + 1); 
-	Location.y += Velocity.y * (_deltaTime + 1);
-	Velocity = {0, 0};
+	Location.x += Velocity.x * _deltaTime;
+	Location.y += Velocity.y * _deltaTime;
+	Velocity = { 0, 0 };
 
 	CharacterSprite->SetLocation(Location);
 }
@@ -25,7 +25,7 @@ void PlayerClass::MoveF(int _Number)
 	_Number %= vMoveF.size();
 	CharacterSprite->SetImageLocation(vMoveF[_Number]);
 
-	Velocity.y += 0.75f;
+	Velocity.y += 100.0f;
 }
 
 void PlayerClass::MoveR(int _Number)

@@ -1,5 +1,6 @@
 #include "CharacterSelect.h"
 #include "InputSystem.h"
+#include "StageMgr.h"
 
 #include "GuyClass.h"
 #include "PlumpManClass.h"
@@ -52,23 +53,32 @@ void CharacterSelect::Render(float _deltaTime)
 	{
 		fPlayTime += _deltaTime;
 
-		if (fPlayTime <= 0.5)
+		if (fPlayTime <= 0.25)
 		{
 			Player->MoveF(fPlayTime / 0.1);
 
-			if(fPlayTime > 0.5)
+			if (fPlayTime > 0.25)
 				Player->ResetAction();
 		}
 		else if (fPlayTime <= 0.8)
 		{
-			Player->SetVelocity({4, 0});
-			Player->MoveR((fPlayTime - 0.5) / 0.1);
+			Player->SetVelocity({ 100, 0 });
+			Player->MoveR((fPlayTime - 0.25) / 0.1);
 		}
-		else if (fPlayTime <= 2.5)
+		else if (fPlayTime <= 1.5)
 		{
-			float A = (fPlayTime - 0.8) / 0.1;
-			Player->SetVelocity({ 4, (A * A - 5 * A)});
-			Player->Jump(A);
+			Player->ResetAction();
+		}
+		else if (fPlayTime <= 2.5f)
+		{
+			float A = (fPlayTime - 1.5f) * 100;
+			Player->SetVelocity({ A * 10, (A * A - 45 * A) });
+			Player->Jump(A * 0.001 / 0.1);
+		}
+		else
+		{
+			//장면 전환
+			StageMgr::GetInst()->SetState(2);
 		}
 
 		Player->Render(_deltaTime);
