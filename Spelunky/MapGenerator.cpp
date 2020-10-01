@@ -25,19 +25,21 @@ MapGenerator::MapGenerator()
 			{
 				char MoveX = Course ? -1 : 1;
 
-				/*room[PrevRoom.X][PrevRoom.Y].ConnectRoom.push_back({ PrevRoom.X + MoveX ,y });
-				room[PrevRoom.X + x][PrevRoom.Y].ConnectRoom.push_back({ PrevRoom.X ,y });*/
+				room[PrevRoom.X][PrevRoom.Y].ConnectRoom.push_back({ PrevRoom.X + MoveX ,y });
+				room[PrevRoom.X + MoveX][PrevRoom.Y].ConnectRoom.push_back({ PrevRoom.X ,y });
 
 				PrevRoom = { PrevRoom.X + MoveX ,y };
 
-				if (PrevRoom.X == 0 || PrevRoom.X == 3)
+				if ((PrevRoom.X == 0 || PrevRoom.X == 3) && (PrevRoom.Y == y))
 					break;
 
 				if (rand() % 2 == 0)
 					break;
 			}
+
+			room[PrevRoom.X][PrevRoom.Y].bEnd = true;
 		}
 
-		//Level.push(*room);
+		Level.push(*room);
 	}
 }
