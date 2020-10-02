@@ -50,6 +50,12 @@
     <Filter Include="Scr\System\MapGenerator">
       <UniqueIdentifier>{ae829ff2-6f52-4d96-9c32-dc3d4e0f3dcc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scr\Object">
+      <UniqueIdentifier>{813aa9b7-e6da-40c4-996d-b50ca76e67ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scr\Object\Block">
+      <UniqueIdentifier>{38200744-4517-4bc1-82f8-a1f498c0170b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h">
@@ -99,6 +105,12 @@
     </ClInclude>
     <ClInclude Include="MapGenerator.h">
       <Filter>Scr\System\MapGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectClass.h">
+      <Filter>Scr\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Scr\Object\Block</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +177,12 @@
     </ClCompile>
     <ClCompile Include="MapGenerator.cpp">
       <Filter>Scr\System\MapGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectClass.cpp">
+      <Filter>Scr\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Scr\Object\Block</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

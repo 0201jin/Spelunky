@@ -25,3 +25,9 @@ void MainMenu::Render(float _deltaTime)
 	//for (int i = 0; i < spriteSheet.size(); i++)
 	//	spriteSheet[i]->Draw();
 }
+
+MainMenu::~MainMenu()
+{
+	delete(spriteSheet[0]);
+	delete(spriteSheet[1]);
+}

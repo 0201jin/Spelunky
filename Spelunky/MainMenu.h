@@ -8,6 +8,8 @@ public:
 	virtual void Update(float _deltaTime);
 	virtual void Render(float _deltaTime);
 
+	~MainMenu();
+
 private:
 	vector<SpriteSheet*> spriteSheet;
 };

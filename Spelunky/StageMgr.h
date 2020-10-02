@@ -1,5 +1,6 @@
 #pragma once
 #include "Stage.h"
+#include "PlayerClass.h"
 
 class StageMgr
 {
@@ -18,8 +19,19 @@ private:
 
 	Stage* mStage;
 	ID2D1HwndRenderTarget* D2DRenderTarget;
+	PlayerClass* mPlayer;
 
 public:
+	PlayerClass* GetPlayer()
+	{
+		return mPlayer;
+	}
+
+	void SetPlayer(PlayerClass* _player)
+	{
+		mPlayer = _player;
+	}
+
 	static StageMgr* GetInst()
 	{
 		if (Inst == nullptr)

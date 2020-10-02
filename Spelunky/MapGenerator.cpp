@@ -7,12 +7,16 @@ MapGenerator::MapGenerator()
 	{
 		int StartIndex = rand() % 4;
 
-		RoomStruct room[4][4];
-		room[StartIndex][0].bStart = true;
+		Level.push(vector<vector<RoomStruct>>(4));
+
+		for (int y = 0; y < 4; y++)
+			Level.back()[y] = vector<RoomStruct>(4);
+
+		Level.back()[StartIndex][0].bStart = true;
 
 		Position PrevRoom = { StartIndex, 0 };
 
-		for (char y = 0; y < 4; y++)
+		for (int y = 0; y < 4; y++)
 		{
 			bool Course = rand() % 2; //true 왼쪽 false 오른쪽
 
@@ -21,14 +25,14 @@ MapGenerator::MapGenerator()
 			else if (PrevRoom.X == 3)
 				Course = true;
 
-			for (char x = 0; x < 4; x++)
+			for (int x = 0; x < 4; x++)
 			{
-				char MoveX = Course ? -1 : 1;
+				int MoveX = Course ? -1 : 1;
 
-				room[PrevRoom.X][PrevRoom.Y].ConnectRoom.push_back({ PrevRoom.X + MoveX ,y });
-				room[PrevRoom.X + MoveX][PrevRoom.Y].ConnectRoom.push_back({ PrevRoom.X ,y });
+				Level.back()[PrevRoom.X][PrevRoom.Y].ConnectRoom.push_back({ PrevRoom.X + MoveX ,y });
+				Level.back()[PrevRoom.X + MoveX][PrevRoom.Y].ConnectRoom.push_back({ PrevRoom.X ,y });
 
-				PrevRoom = { PrevRoom.X + MoveX ,y };
+				PrevRoom = { int(PrevRoom.X + MoveX) ,y };
 
 				if ((PrevRoom.X == 0 || PrevRoom.X == 3) && (PrevRoom.Y == y))
 					break;
@@ -37,9 +41,11 @@ MapGenerator::MapGenerator()
 					break;
 			}
 
-			room[PrevRoom.X][PrevRoom.Y].bEnd = true;
+			Level.back()[PrevRoom.X][PrevRoom.Y].bEnd = true;
 		}
 
-		Level.push(*room);
+		//블럭 배치
+
+		//통로 연결
 	}
 }

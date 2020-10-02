@@ -6,13 +6,13 @@ using namespace std;
 
 typedef struct Position
 {
-	char X;
-	char Y;
+	int X;
+	int Y;
 }Position;
 
 typedef struct RoomStruct
 {
-	unsigned char Blocks[16][16] = { 0, };
+	int Blocks[16][16] = {0, };
 	vector<Position> ConnectRoom;
 	bool bStart = false;
 	bool bEnd = false;
@@ -21,15 +21,11 @@ typedef struct RoomStruct
 	{
 		for (int x = 0; x < 16; x += 15)
 			for (int i = 0; i < 16; i++)
-			{
 				Blocks[x][i] = 1;
-			}
 
 		for(int y = 0; y < 16; y += 15)
 			for (int i = 0; i < 16; i++)
-			{
 				Blocks[i][y] = 1;
-			}
 	}
 }RoomStruct;
 
@@ -39,5 +35,5 @@ public:
 	MapGenerator();
 
 public:
-	queue<RoomStruct*> Level;
+	queue<vector<vector<RoomStruct>>> Level;
 };

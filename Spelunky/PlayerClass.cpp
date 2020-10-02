@@ -1,7 +1,17 @@
 #include "PlayerClass.h"
+#include "InputSystem.h"
 
 void PlayerClass::Update(float _deltaTime)
 {
+	if (InputSystem::GetInst()->GetKeyInput(DIK_LEFTARROW))
+	{
+		Velocity.x = -fPlayerSpeed;
+	}
+	else if (InputSystem::GetInst()->GetKeyInput(DIK_RIGHTARROW))
+	{
+		Velocity.x = fPlayerSpeed;
+	}
+
 	Location.x += Velocity.x * _deltaTime;
 	Location.y += Velocity.y * _deltaTime;
 	Velocity = { 0, 0 };

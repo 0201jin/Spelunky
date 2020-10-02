@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Block.h" />
     <ClInclude Include="CharacterSelect.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GuyClass.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="Main.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MapGenerator.h" />
+    <ClInclude Include="ObjectClass.h" />
     <ClInclude Include="PlayerClass.h" />
     <ClInclude Include="PlumpManClass.h" />
     <ClInclude Include="Spelunky.h" />
@@ -161,6 +163,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="CharacterSelect.cpp" />
     <ClCompile Include="GuyClass.cpp" />
     <ClCompile Include="InGame.cpp" />
@@ -168,6 +171,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MapGenerator.cpp" />
+    <ClCompile Include="ObjectClass.cpp" />
     <ClCompile Include="PlayerClass.cpp" />
     <ClCompile Include="PlumpManClass.cpp" />
     <ClCompile Include="Spelunky.cpp" />

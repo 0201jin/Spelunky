@@ -1,3 +1,2 @@
-﻿  MapGenerator.cpp
-C:\Users\0201j\Desktop\공부\Spelunky\Spelunky\MapGenerator.cpp(13,25): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
+﻿  InGame.cpp
   Spelunky.vcxproj -> C:\Users\0201j\Desktop\공부\Spelunky\x64\Debug\Spelunky.exe

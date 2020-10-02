@@ -5,6 +5,14 @@
 #include "GuyClass.h"
 #include "PlumpManClass.h"
 
+CharacterSelect::~CharacterSelect()
+{
+	delete(BGspriteSheet);
+
+	for (int i = vPlayers.size() - 1; i > 0; i--)
+		delete(vPlayers[i]);
+}
+
 void CharacterSelect::Init(ID2D1HwndRenderTarget* _D2DRenderTarget)
 {
 	D2DRenderTarget = _D2DRenderTarget;
@@ -73,11 +81,12 @@ void CharacterSelect::Render(float _deltaTime)
 		{
 			float A = (fPlayTime - 1.5f) * 100;
 			Player->SetVelocity({ A * 10, (A * A - 45 * A) });
-			Player->Jump(A * 0.001 / 0.1);
+			Player->Jump((A * 0.01) / 0.1);
 		}
 		else
 		{
 			//장면 전환
+			StageMgr::GetInst()->SetPlayer(Player);
 			StageMgr::GetInst()->SetState(2);
 		}
 

@@ -3,6 +3,9 @@
 #include "PlayerClass.h"
 #include "MapGenerator.h"
 
+#include "Block.h"
+
+
 class InGame : public Stage
 {
 public:
@@ -14,5 +17,7 @@ private:
 	PlayerClass* Player = nullptr;
 
 	MapGenerator* MapGen;
+
+	vector<ObjectClass*> Blocks;
 };
 
