@@ -47,7 +47,9 @@ void CharacterSelect::Update(float _deltaTime)
 	}
 
 	if (Player != nullptr)
+	{
 		Player->Update(_deltaTime);
+	}
 }
 
 void CharacterSelect::Render(float _deltaTime)

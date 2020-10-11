@@ -1,6 +1,5 @@
 #include "Main.h"
 #include <iostream>
-
 using namespace std;
 
 Main::Main()
