@@ -41,14 +41,14 @@ typedef struct RoomStruct
 
 	RoomStruct()
 	{
-		fill_n(Blocks[0], 256, 0);
-		/*for (int x = 0; x < 16; x += 15)
-			for (int i = 0; i < 16; i++)
-				Blocks[x][i] = 1;
+		fill_n(Blocks[0], 256, 1);
+	}
 
-		for (int y = 0; y < 16; y += 15)
-			for (int i = 0; i < 16; i++)
-				Blocks[i][y] = 1;*/
+	void RoomDigCenter()
+	{
+		for (int y = 7; y < 9; y++)
+			for (int x = 6; x < 9; x++)
+				Blocks[x][y] = 0;
 	}
 }RoomStruct;
 

@@ -2,9 +2,9 @@
 
 #define IMAGE_SIZE 80
 
-Block::Block()
+Block::Block(ID2D1Bitmap* _bmp)
 {
-	Sprite = new SpriteSheet(L"resource/dirttiles.png", { IMAGE_SIZE, IMAGE_SIZE }, { 0, 0 }, { 64, 64 }, { 0, 0 });
+	Sprite = new SpriteSheet(_bmp, { IMAGE_SIZE, IMAGE_SIZE }, { 0, 0 }, { 64, 64 }, { 0, 0 });
 }
 
 void Block::SetObjectNumber(int _number)

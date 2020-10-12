@@ -19,5 +19,8 @@ private:
 	MapGenerator* MapGen;
 
 	vector<ObjectClass*> Blocks;
+	ID2D1Bitmap* vBmp[10];
+
+	const vector<const wchar_t*> vFileName = { L"resource/dirttiles.png" };
 };
 

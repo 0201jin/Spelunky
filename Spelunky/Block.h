@@ -10,7 +10,7 @@ typedef struct IPosition
 class Block : public ObjectClass
 {
 public:
-	Block();
+	Block(ID2D1Bitmap* _bmp);
 
 	virtual void SetObjectNumber(int _number);
 	virtual void SetLocation(int _x, int _y);

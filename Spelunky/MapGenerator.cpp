@@ -34,7 +34,8 @@ MapGenerator::MapGenerator()
 
 		cout << "Start " << PrevRoom << endl;
 
-		Level.back()[PrevRoom.X][PrevRoom.Y].Road.push_back({ 8, 8 });
+		Level.back()[PrevRoom.X][PrevRoom.Y].Road.push_back({ 7, 7 });
+		Level.back()[PrevRoom.X][PrevRoom.Y].RoomDigCenter();
 
 		for (int y = 0; y < 4; y++)
 		{
@@ -74,7 +75,8 @@ MapGenerator::MapGenerator()
 		}
 
 		Level.back()[PrevRoom.X][PrevRoom.Y].bEnd = true;
-		Level.back()[PrevRoom.X][PrevRoom.Y].Road.push_back({ 8, 8 });
+		Level.back()[PrevRoom.X][PrevRoom.Y].Road.push_back({ 7, 7 });
+		Level.back()[PrevRoom.X][PrevRoom.Y].RoomDigCenter();
 
 		cout << "End " << PrevRoom << endl;
 
@@ -155,7 +157,7 @@ MapGenerator::MapGenerator()
 		//통로 연결
 		CreateRoad();
 
-		//블록 삭제 / 배치
+		//블록 배치
 	}
 }
 
@@ -229,7 +231,7 @@ void MapGenerator::CreateRoad()
 					sort(Graph[i].begin(), Graph[i].end(), Sorting);
 
 					int Size = Graph[i].size();
-					for (int j = 0; j < Size; j++)
+					for (int j = 0; j < Size && 1 < Graph[i].size(); j++)
 					{
 						int Start = i;
 						int Prev = Start;
@@ -322,9 +324,55 @@ void MapGenerator::CreateRoadRecursion(Position _A, Position _B, int _rx, int _r
 {
 	Position Center = { (_A.X - _B.X) / 2 + _B.X, (_A.Y - _B.Y) / 2 + _B.Y };
 
-	Level.back()[_rx][_ry].Blocks[_A.X][_A.Y] = 1;
-	Level.back()[_rx][_ry].Blocks[_B.X][_B.Y] = 1;
-	Level.back()[_rx][_ry].Blocks[Center.X][Center.Y] = 1;
+	if (!(_A.X == _B.X || _A.Y == _B.Y))
+	{
+		int randX = (rand() % 3);
+		int randY = (rand() % 3);
+
+		for (int x = -1; x <= randX; x++)
+		{
+			for (int y = -1; y <= randY; y++)
+			{
+				if (_A.X + x >= 0 && _A.X + x <= 15 && _A.Y + y >= 0 && _A.Y + y <= 15)
+					Level.back()[_rx][_ry].Blocks[_A.X + x][_A.Y + y] = 0;
+
+				if (_B.X + x >= 0 && _B.X + x <= 15 && _B.Y + y >= 0 && _B.Y + y <= 15)
+					Level.back()[_rx][_ry].Blocks[_B.X + x][_B.Y + y] = 0;
+
+				if (Center.X + x >= 0 && Center.X + x <= 15 && Center.Y + y >= 0 && Center.Y + y <= 15)
+					Level.back()[_rx][_ry].Blocks[Center.X + x][Center.Y + y] = 0;
+			}
+		}
+	}
+	else
+	{
+		if (rand() % 2 == 0)
+		{
+			Level.back()[_rx][_ry].Blocks[_A.X][_A.Y] = 0;
+			Level.back()[_rx][_ry].Blocks[_B.X][_B.Y] = 0;
+			Level.back()[_rx][_ry].Blocks[Center.X][Center.Y] = 0;
+		}
+		else
+		{
+			int randX = (rand() % 1) - 1;
+			int randY = (rand() % 1) - 1;
+
+			for (int x = -1; x <= randX; x++)
+			{
+				for (int y = -1; y <= randY; y++)
+				{
+					if (_A.X + x >= 0 && _A.X + x <= 15 && _A.Y + y >= 0 && _A.Y + y <= 15)
+						Level.back()[_rx][_ry].Blocks[_A.X + x][_A.Y + y] = 0;
+
+					if (_B.X + x >= 0 && _B.X + x <= 15 && _B.Y + y >= 0 && _B.Y + y <= 15)
+						Level.back()[_rx][_ry].Blocks[_B.X + x][_B.Y + y] = 0;
+
+					if (Center.X + x >= 0 && Center.X + x <= 15 && Center.Y + y >= 0 && Center.Y + y <= 15)
+						Level.back()[_rx][_ry].Blocks[Center.X + x][Center.Y + y] = 0;
+				}
+			}
+		}
+	}
 
 	if (_A == _B || _A.Distance(_B) < 2)
 		return;

@@ -5,6 +5,33 @@ void InGame::Init(ID2D1HwndRenderTarget* _D2DRenderTarget)
 {
 	D2DRenderTarget = _D2DRenderTarget;
 
+	for (int i = 0; i < vFileName.size(); i++)
+	{
+		IWICImagingFactory* wicFactory = nullptr;
+		CoCreateInstance(CLSID_WICImagingFactory, nullptr, CLSCTX_INPROC_SERVER,
+			IID_IWICImagingFactory, (LPVOID*)&wicFactory);
+
+		IWICBitmapDecoder* wicDecoder = nullptr;
+		wicFactory->CreateDecoderFromFilename(vFileName[i], nullptr, GENERIC_READ,
+			WICDecodeMetadataCacheOnLoad, &wicDecoder);
+
+		IWICBitmapFrameDecode* wicFrame = nullptr;
+		wicDecoder->GetFrame(0, &wicFrame);
+
+		IWICFormatConverter* wicConverter = nullptr;
+		wicFactory->CreateFormatConverter(&wicConverter);
+
+		wicConverter->Initialize(wicFrame, GUID_WICPixelFormat32bppPBGRA,
+			WICBitmapDitherTypeNone, nullptr, 0.0, WICBitmapPaletteTypeCustom);
+
+		D2DRenderTarget->CreateBitmapFromWicBitmap(wicConverter, nullptr, &vBmp[i]);
+
+		wicFactory->Release();
+		wicDecoder->Release();
+		wicConverter->Release();
+		wicFrame->Release();
+	}
+
 	MapGen = new MapGenerator();
 
 	//최적화 하기 블록을 선언하는 부분에서 속도가 너무 느림
@@ -25,13 +52,7 @@ void InGame::Init(ID2D1HwndRenderTarget* _D2DRenderTarget)
 
 					if (BlockNumber != 0)
 					{
-						/*cout << BlockNumber;
-						cout << " rx: " << rx;
-						cout << " ry: " << ry;
-						cout << " x :" << x;
-						cout << " y " << y << endl;*/
-
-						Block* block = new Block();
+						Block* block = new Block(vBmp[0]);
 
 						block->SetLocation((rx * 16) + x, (ry * 16) + y);
 						block->SetObjectNumber(BlockNumber);

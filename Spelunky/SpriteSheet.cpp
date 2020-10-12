@@ -45,6 +45,27 @@ SpriteSheet::SpriteSheet(const wchar_t* _fileName, D2D_VECTOR_2F _Size, D2D_VECT
 	fImageY = _ImageLocation.y;
 }
 
+SpriteSheet::SpriteSheet(ID2D1Bitmap* _bmp, D2D_VECTOR_2F _Size, D2D_VECTOR_2F _Location, D2D_VECTOR_2F _ImageSize, D2D_VECTOR_2F _ImageLocation)
+{
+	bmp = _bmp;
+
+	Size = _Size;
+	Location = _Location;
+
+	if (_ImageSize.x == -1)
+		fImageWidth = bmp->GetSize().width;
+	else
+		fImageWidth = _ImageSize.x;
+
+	if (_ImageSize.y == -1)
+		fImageHeight = bmp->GetSize().height;
+	else
+		fImageHeight = _ImageSize.y;
+
+	fImageX = _ImageLocation.x;
+	fImageY = _ImageLocation.y;
+}
+
 SpriteSheet::SpriteSheet(ID2D1HwndRenderTarget* _renderTarget)
 {
 	if (_renderTarget != nullptr)

@@ -10,8 +10,11 @@ class SpriteSheet
 public:
 	SpriteSheet(ID2D1HwndRenderTarget* _renderTarget);
 	SpriteSheet(const wchar_t* _fileName, 
-		D2D_VECTOR_2F _Size, D2D_VECTOR_2F _Locatioon, 
+		D2D_VECTOR_2F _Size, D2D_VECTOR_2F _Location, 
 		D2D_VECTOR_2F _ImageSize = {-1, -1}, D2D_VECTOR_2F _ImageLocation = { 0, 0 });
+	SpriteSheet(ID2D1Bitmap* _bmp,
+		D2D_VECTOR_2F _Size, D2D_VECTOR_2F _Location,
+		D2D_VECTOR_2F _ImageSize = { -1, -1 }, D2D_VECTOR_2F _ImageLocation = { 0, 0 });
 	~SpriteSheet();
 
 	void SetLocation(D2D_VECTOR_2F _Location);
