@@ -62,6 +62,10 @@ private:
 	void CreateRoad();
 
 	void CreateRoadRecursion(Position A, Position B, int _rx, int _ry);
+	void SettingBlock();
+
+	bool CheckFloorBlcok(Position _roomPosition, Position _position);
+	bool CheckCeilBlock(Position _roomPosition, Position _position);
 
 public:
 	queue<vector<vector<RoomStruct>>> Level;

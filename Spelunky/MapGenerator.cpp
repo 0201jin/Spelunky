@@ -158,6 +158,7 @@ MapGenerator::MapGenerator()
 		CreateRoad();
 
 		//블록 배치
+		SettingBlock();
 	}
 }
 
@@ -379,4 +380,84 @@ void MapGenerator::CreateRoadRecursion(Position _A, Position _B, int _rx, int _r
 
 	CreateRoadRecursion(_A, Center, _rx, _ry);
 	CreateRoadRecursion(_B, Center, _rx, _ry);
+}
+
+void MapGenerator::SettingBlock()
+{
+	for (int rx = 0; rx < 4; rx++)
+	{
+		for (int ry = 0; ry < 4; ry++)
+		{
+			for (int x = 0; x < 16; x++)
+			{
+				for (int y = 0; y < 16; y++)
+				{
+					if (rand() % 100 >= 90)
+					{
+						int random = (rand() % 4) + 2;
+						//떨어지는 돌, 화살 트랩, 가시, 화약통
+
+						switch (random)
+						{
+						case 2: //떨어지는 돌
+							if (!CheckFloorBlcok({ rx, ry }, { x, y }))
+								random = Level.back()[rx][ry].Blocks[x][y];
+							break;
+						case 3: //화살 트랩
+							//진행하고자 하는 방향의 앞이 비어 있어야 함
+							//양옆에 다른 화살 트랩이 있으면 안됨. 반경 2칸
+							if (!CheckFloorBlcok({ rx, ry }, { x, y }))
+								random = Level.back()[rx][ry].Blocks[x][y];
+							break;
+
+						case 4: //가시
+							//위에 빈곳이어야 함
+							if (!CheckFloorBlcok({ rx, ry }, { x, y }) || CheckCeilBlock({ rx, ry }, { x, y }))
+								random = Level.back()[rx][ry].Blocks[x][y];
+							break;
+
+						case 5: //화약통
+							if (!CheckFloorBlcok({ rx, ry }, { x, y }))
+								random = Level.back()[rx][ry].Blocks[x][y];
+							break;
+						}
+
+						Level.back()[rx][ry].Blocks[x][y] = random;
+					}
+				}
+			}
+		}
+	}
+}
+
+bool MapGenerator::CheckFloorBlcok(Position _roomPosition, Position _position)
+{
+	if (_position.Y + 1 <= 15)
+	{
+		if (Level.back()[_roomPosition.X][_roomPosition.Y].Blocks[_position.X][_position.Y + 1] == 0)
+			return false;
+	}
+	else if (_roomPosition.Y + 1 <= 3)
+	{
+		if (Level.back()[_roomPosition.X][_roomPosition.Y + 1].Blocks[_position.X][0] == 0)
+			return false;
+	}
+
+	return true;
+}
+
+bool MapGenerator::CheckCeilBlock(Position _roomPosition, Position _position)
+{
+	if (_position.Y - 1 >= 0)
+	{
+		if (Level.back()[_roomPosition.X][_roomPosition.Y].Blocks[_position.X][_position.Y - 1] == 0)
+			return false;
+	}
+	else if (_roomPosition.Y - 1 >= 0)
+	{
+		if (Level.back()[_roomPosition.X][_roomPosition.Y - 1].Blocks[_position.X][0] == 0)
+			return false;
+	}
+
+	return true;
 }

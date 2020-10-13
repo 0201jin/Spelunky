@@ -5,61 +5,61 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Scr">
-      <UniqueIdentifier>{4a5ca6fd-46c7-4861-aa9f-7fb16c94f3bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scr\Main">
-      <UniqueIdentifier>{fa986b08-655f-4016-871e-041bc7dd0c97}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Base">
       <UniqueIdentifier>{7033cd95-ca96-479b-8ad9-160c07901344}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scr\State">
+    <Filter Include="Src">
+      <UniqueIdentifier>{4a5ca6fd-46c7-4861-aa9f-7fb16c94f3bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Main">
+      <UniqueIdentifier>{fa986b08-655f-4016-871e-041bc7dd0c97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\State">
       <UniqueIdentifier>{bbf55476-938e-4fde-9711-4a1e146c3f69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scr\State\MainMenu">
+    <Filter Include="Src\State\MainMenu">
       <UniqueIdentifier>{e4b1c733-da46-42f1-97bc-3cd7498e7eed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scr\State\Mgr">
+    <Filter Include="Src\State\Mgr">
       <UniqueIdentifier>{8ba64519-feae-469f-a7d9-5869ac59b759}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scr\System">
-      <UniqueIdentifier>{564882ad-3974-4580-9b22-59b6c5f36d63}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scr\State\CharacterSelect">
+    <Filter Include="Src\State\CharacterSelect">
       <UniqueIdentifier>{7a1a47dc-955b-4c42-abd0-012e16c75435}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scr\Player">
-      <UniqueIdentifier>{09c7b75e-6cac-411d-aa63-6838c50ff5ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scr\Player\Guy">
-      <UniqueIdentifier>{4536a04e-1ae7-43f2-9c5b-1e9394abd248}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scr\Player\PlumpMan">
-      <UniqueIdentifier>{d75dcdcf-5078-46ff-9780-70e7dfd1a077}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scr\System\InputSystem">
-      <UniqueIdentifier>{6a6114ba-e517-4e77-b2a0-f171ddd59d26}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scr\System\SpriteSheet">
-      <UniqueIdentifier>{ed6a14b6-20c4-4c2a-a198-8d93bd2d6570}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scr\State\InGame">
+    <Filter Include="Src\State\InGame">
       <UniqueIdentifier>{65198b05-bce5-4d1f-aa91-17d3559278f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scr\System\MapGenerator">
+    <Filter Include="Src\System">
+      <UniqueIdentifier>{564882ad-3974-4580-9b22-59b6c5f36d63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\System\InputSystem">
+      <UniqueIdentifier>{6a6114ba-e517-4e77-b2a0-f171ddd59d26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\System\SpriteSheet">
+      <UniqueIdentifier>{ed6a14b6-20c4-4c2a-a198-8d93bd2d6570}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\System\MapGenerator">
       <UniqueIdentifier>{ae829ff2-6f52-4d96-9c32-dc3d4e0f3dcc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scr\Object">
+    <Filter Include="Src\Player">
+      <UniqueIdentifier>{09c7b75e-6cac-411d-aa63-6838c50ff5ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Player\Guy">
+      <UniqueIdentifier>{4536a04e-1ae7-43f2-9c5b-1e9394abd248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Player\PlumpMan">
+      <UniqueIdentifier>{d75dcdcf-5078-46ff-9780-70e7dfd1a077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Object">
       <UniqueIdentifier>{813aa9b7-e6da-40c4-996d-b50ca76e67ff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scr\Object\Block">
+    <Filter Include="Src\Object\Block">
       <UniqueIdentifier>{38200744-4517-4bc1-82f8-a1f498c0170b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h">
-      <Filter>Scr\Main</Filter>
+      <Filter>Src\Main</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
       <Filter>Base</Filter>
@@ -71,46 +71,46 @@
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="StageMgr.h">
-      <Filter>Scr\State\Mgr</Filter>
+      <Filter>Src\State\Mgr</Filter>
     </ClInclude>
     <ClInclude Include="Stage.h">
-      <Filter>Scr\State\Mgr</Filter>
+      <Filter>Src\State\Mgr</Filter>
     </ClInclude>
     <ClInclude Include="MainMenu.h">
-      <Filter>Scr\State\MainMenu</Filter>
+      <Filter>Src\State\MainMenu</Filter>
     </ClInclude>
     <ClInclude Include="Spelunky.h">
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="CharacterSelect.h">
-      <Filter>Scr\State\CharacterSelect</Filter>
+      <Filter>Src\State\CharacterSelect</Filter>
     </ClInclude>
     <ClInclude Include="PlayerClass.h">
-      <Filter>Scr\Player</Filter>
+      <Filter>Src\Player</Filter>
     </ClInclude>
     <ClInclude Include="GuyClass.h">
-      <Filter>Scr\Player\Guy</Filter>
+      <Filter>Src\Player\Guy</Filter>
     </ClInclude>
     <ClInclude Include="PlumpManClass.h">
-      <Filter>Scr\Player\PlumpMan</Filter>
+      <Filter>Src\Player\PlumpMan</Filter>
     </ClInclude>
     <ClInclude Include="InputSystem.h">
-      <Filter>Scr\System\InputSystem</Filter>
+      <Filter>Src\System\InputSystem</Filter>
     </ClInclude>
     <ClInclude Include="SpriteSheet.h">
-      <Filter>Scr\System\SpriteSheet</Filter>
+      <Filter>Src\System\SpriteSheet</Filter>
     </ClInclude>
     <ClInclude Include="InGame.h">
-      <Filter>Scr\State\InGame</Filter>
+      <Filter>Src\State\InGame</Filter>
     </ClInclude>
     <ClInclude Include="MapGenerator.h">
-      <Filter>Scr\System\MapGenerator</Filter>
+      <Filter>Src\System\MapGenerator</Filter>
     </ClInclude>
     <ClInclude Include="ObjectClass.h">
-      <Filter>Scr\Object</Filter>
+      <Filter>Src\Object</Filter>
     </ClInclude>
     <ClInclude Include="Block.h">
-      <Filter>Scr\Object\Block</Filter>
+      <Filter>Src\Object\Block</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -140,49 +140,49 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>Scr\Main</Filter>
+      <Filter>Src\Main</Filter>
     </ClCompile>
     <ClCompile Include="StageMgr.cpp">
-      <Filter>Scr\State\Mgr</Filter>
+      <Filter>Src\State\Mgr</Filter>
     </ClCompile>
     <ClCompile Include="Stage.cpp">
-      <Filter>Scr\State\Mgr</Filter>
+      <Filter>Src\State\Mgr</Filter>
     </ClCompile>
     <ClCompile Include="MainMenu.cpp">
-      <Filter>Scr\State\MainMenu</Filter>
+      <Filter>Src\State\MainMenu</Filter>
     </ClCompile>
     <ClCompile Include="Spelunky.cpp">
       <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="CharacterSelect.cpp">
-      <Filter>Scr\State\CharacterSelect</Filter>
+      <Filter>Src\State\CharacterSelect</Filter>
     </ClCompile>
     <ClCompile Include="PlayerClass.cpp">
-      <Filter>Scr\Player</Filter>
+      <Filter>Src\Player</Filter>
     </ClCompile>
     <ClCompile Include="GuyClass.cpp">
-      <Filter>Scr\Player\Guy</Filter>
+      <Filter>Src\Player\Guy</Filter>
     </ClCompile>
     <ClCompile Include="PlumpManClass.cpp">
-      <Filter>Scr\Player\PlumpMan</Filter>
+      <Filter>Src\Player\PlumpMan</Filter>
     </ClCompile>
     <ClCompile Include="InputSystem.cpp">
-      <Filter>Scr\System\InputSystem</Filter>
+      <Filter>Src\System\InputSystem</Filter>
     </ClCompile>
     <ClCompile Include="SpriteSheet.cpp">
-      <Filter>Scr\System\SpriteSheet</Filter>
+      <Filter>Src\System\SpriteSheet</Filter>
     </ClCompile>
     <ClCompile Include="InGame.cpp">
-      <Filter>Scr\State\InGame</Filter>
+      <Filter>Src\State\InGame</Filter>
     </ClCompile>
     <ClCompile Include="MapGenerator.cpp">
-      <Filter>Scr\System\MapGenerator</Filter>
+      <Filter>Src\System\MapGenerator</Filter>
     </ClCompile>
     <ClCompile Include="ObjectClass.cpp">
-      <Filter>Scr\Object</Filter>
+      <Filter>Src\Object</Filter>
     </ClCompile>
     <ClCompile Include="Block.cpp">
-      <Filter>Scr\Object\Block</Filter>
+      <Filter>Src\Object\Block</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
